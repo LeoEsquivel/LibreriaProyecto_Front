@@ -13,6 +13,9 @@ import { CartComponent } from './pages/cart/cart.component';
 import { InventoryComponent } from './pages/inventory/inventory.component';
 import { ReportComponent } from './pages/report/report.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { AuthorsComponent } from './pages/authors/authors.component';
+import { EditorialsComponent } from './pages/editorials/editorials.component';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     CartComponent,
     InventoryComponent,
     ReportComponent,
-    NavbarComponent
+    NavbarComponent,
+    AuthorsComponent,
+    EditorialsComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
