@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BookCardComponent } from './components/book-card/book-card.component';
@@ -16,6 +17,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { AuthorsComponent } from './pages/authors/authors.component';
 import { EditorialsComponent } from './pages/editorials/editorials.component';
 import { SearchComponent } from './pages/search/search.component';
+import { BookslistComponent } from './pages/bookslist/bookslist.component';
+import { BookAuthorsComponent } from './pages/book-authors/book-authors.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -32,11 +36,16 @@ import { SearchComponent } from './pages/search/search.component';
     NavbarComponent,
     AuthorsComponent,
     EditorialsComponent,
-    SearchComponent
+    SearchComponent,
+    BookslistComponent,
+    BookAuthorsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
