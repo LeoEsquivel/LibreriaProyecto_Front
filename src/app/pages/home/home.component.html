@@ -1,1 +1,18 @@
-<p>home works!</p>
+<br><br>
+<div class="d-flex justify-content-start">
+    <blockquote class="blockquote text-center text-dark">
+        <div class="row">
+            <img class="img" style="width: 16rem;" src="https://www.65ymas.com/uploads/s1/11/23/67/jorge-luis-borges-grete-stern_1_621x621.jpeg">
+            <div class="col"><br>
+                <p class="text-left">"De los diversos instrumentos inventados por el hombre, el más asombroso es el libro; todos los demás son extensiones de su cuerpo… Sólo el libro es una extensión de la imaginación y la memoria”.</p><br>
+                <footer class="blockquote-footer text-right">Jorge Luis Borges, <cite title="The Greek Way"> Universidad de Belgrano a finales de los años 70. </cite></footer>
+            </div>
+        </div>
+    </blockquote>
+</div>
+<hr>
+<div class="container">
+    <div class="card-columns">
+        <app-book-card [book]="book" *ngFor="let book of books"></app-book-card>
+    </div>
+</div>
