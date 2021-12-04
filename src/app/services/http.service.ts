@@ -6,6 +6,7 @@ import { Author } from '../models/authors.model';
 import { Editorial } from '../models/editorial.model';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Sale } from '../models/sale.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,7 @@ import { Observable } from 'rxjs';
 export class HttpService {
   private baseUrl: string = environment.BASE_API_URL;
 
-  constructor(private readonly _http: HttpClient) {
-    
-    
-  }
+  constructor(private readonly _http: HttpClient) { }
 
   public getBooks(){
     return this._http.get<Book[]>(this.baseUrl + "/book");
@@ -46,7 +44,21 @@ export class HttpService {
     return this._http.get<Book[]>(this.baseUrl + "/book/"+id+"/edall");
   }
 
+  public getAllSales(){
+    return this._http.get<Sale[]>(this.baseUrl + "/sale");
+  }
+
+  public addAuthor(name:string): Observable<any>{
+    const headers = { 'content-type': 'application/json'};  
+    const body = JSON.stringify(name);
+    return this._http.post(this.baseUrl+"/author", body, {'headers':headers});
+
+  }
+
   public login(username: string, password: string): Observable<any>{
-      return this._http.post(this.baseUrl+"/auth/signin", {username, password});
+      const headers = { 'content-type': 'application/json'};  
+      const body=JSON.stringify({'username': username, 'password': password});
+      console.log(body)
+      return this._http.post(this.baseUrl+"/auth/signin", body, {'headers':headers});
   }
 }

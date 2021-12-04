@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   username!:string;
   password!:string;
 
-  constructor(private _formBuilder: FormBuilder, private _httpService: HttpService) { }
+  constructor(private _formBuilder: FormBuilder, private _httpService: HttpService) {
+    this.send();
+   }
 
   
 
