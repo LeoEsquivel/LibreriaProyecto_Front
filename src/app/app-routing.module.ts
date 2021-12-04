@@ -2,7 +2,9 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AuthorsComponent } from './pages/authors/authors.component';
+import { BookAuthorsComponent } from './pages/book-authors/book-authors.component';
 import { BookComponent } from './pages/book/book.component';
+import { BookslistComponent } from './pages/bookslist/bookslist.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { EditorialsComponent } from './pages/editorials/editorials.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -24,6 +26,8 @@ const routes: Routes = [
   { path: 'inventory', component: InventoryComponent },
   { path: 'reporter', component: ReportComponent },
   { path: 'search/:query', component: SearchComponent },
+  { path: 'editorialbooks/:id', component: BookslistComponent},
+  { path: 'authorbooks/:id', component: BookAuthorsComponent},
   { path: '**', pathMatch: "full", redirectTo: 'home' }
 
 ];
