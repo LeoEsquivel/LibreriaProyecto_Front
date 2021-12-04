@@ -1,1 +1,22 @@
-<p>authors works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><strong>Lista de autores</strong></h1>
+      <p class="lead"></p>
+    </div>
+</div>  
+<br>
+<a [routerLink]="'/home'" class="btn btn-outline-danger">Regresar</a>
+<br><br>
+
+<ul class="list-group">
+    <li class="list-group-item">
+        <a 
+            [routerLink]="['/authorbooks', author._id]" 
+            routerLinkActive="active" 
+            *ngFor="let author of authors" 
+            class="list-group-item list-group-item-action">
+            {{ author.name }}
+        </a> 
+    </li>
+</ul>
+
