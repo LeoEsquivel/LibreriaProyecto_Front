@@ -1,0 +1,15 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><strong>Libros disponibles de: </strong>{{books[0].author.name}}</h1>
+      <p class="lead"></p>
+    </div>
+</div>  
+<br>
+<a [routerLink]="'/home'" class="btn btn-outline-danger">Regresar</a>
+<br><br>
+
+<div class="container">
+    <div class="card-columns">
+        <app-book-card [book]="book" *ngFor="let book of books"></app-book-card>
+    </div>
+</div>
