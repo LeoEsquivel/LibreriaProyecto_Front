@@ -1,0 +1,24 @@
+body{
+
+    background-color: black;
+}
+
+.bg{
+    background-image: url("https://cutewallpaper.org/21/simple-backgrounds-wallpapers/HD-wallpaper-pattern,-simple-background,-backgrounds,-no-.jpg");
+    background-position: center center;
+}
+
+.opacidad{
+    filter:alpha(opacity=70);
+    -moz-opacity:.70;opacity:.70;
+}
+.formulario{
+    position: relative;
+    width: 700px;
+    height: 600px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+    border-radius: 10px;
+    background: rgb(0,0,0,.6);
+}
