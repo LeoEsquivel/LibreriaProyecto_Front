@@ -1,1 +1,21 @@
-<p>editorials works!</p>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><strong>Lista de librerias</strong></h1>
+      <p class="lead"></p>
+    </div>
+</div>  
+<br>
+<a [routerLink]="'/home'" class="btn btn-outline-danger">Regresar</a>
+<br><br>
+<ul class="list-group">
+    <li class="list-group-item">
+        <a 
+            [routerLink]="['/editorialbooks', editorial._id]" 
+            routerLinkActive="active" 
+            *ngFor="let editorial of editorials" 
+            class="list-group-item list-group-item-action">
+            {{ editorial.name }}
+        </a> 
+    </li>
+</ul>
+
