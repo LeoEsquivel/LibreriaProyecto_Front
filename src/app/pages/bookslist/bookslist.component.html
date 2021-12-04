@@ -1,0 +1,16 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><strong>Editorial: </strong>{{books[0].editorial.name}} </h1>
+      <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+</div>
+
+<br>
+<a [routerLink]="'/home'" class="btn btn-outline-danger">Regresar</a>
+<br><br>
+
+<div class="container">
+    <div class="card-columns">
+        <app-book-card [book]="book" *ngFor="let book of books"></app-book-card>
+    </div>
+</div>
