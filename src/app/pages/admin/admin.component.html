@@ -1,1 +1,108 @@
-<p>admin works!</p>
+<br>
+
+<div class="row">
+  <div class="col-3">
+    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <a class="nav-link active bg-dark text-light" id="v-pills-author-tab" data-toggle="pill" href="#v-pills-author" role="tab" aria-controls="v-pills-author" aria-selected="true">Autor</a>
+      <a class="nav-link bg-dark text-light" id="v-pills-editorial-tab" data-toggle="pill" href="#v-pills-editorial" role="tab" aria-controls="v-pills-editorial" aria-selected="false">Editorial</a>
+      <a class="nav-link bg-dark text-light" id="v-pills-book-tab" data-toggle="pill" href="#v-pills-book" role="tab" aria-controls="v-pills-book" aria-selected="false">Libro</a>
+      <a class="nav-link bg-dark text-light" id="v-pills-seeSales-tab" data-toggle="pill" href="#v-pills-seeSales" role="tab" aria-controls="v-pills-seeSales" aria-selected="false">Ver ventas</a>
+    </div>
+  </div>
+  <div class="col-9">
+    <div class="tab-content" id="v-pills-tabContent">
+      <div class="tab-pane fade show active" id="v-pills-author" role="tabpanel" aria-labelledby="v-pills-author-tab">
+        <form>
+          <div class="form-group col-md-6">
+            <label for="authorsname">Nombre del Autor</label>
+            <input [(ngModel)]="Authorsname" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="authorsname">
+          </div>
+          <button (click)="addAuthor()"  type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="v-pills-editorial" role="tabpanel" aria-labelledby="v-pills-editorial-tab">
+        <form>
+          <div class="form-group col-md-6">
+            <label for="editorialsname">Nombre de la Editorial</label>
+            <input type="text" class="form-control" id="editorialsname">
+          </div>
+          <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="v-pills-book" role="tabpanel" aria-labelledby="v-pills-book-tab">
+        <form>
+          <div class="form-group col-md-6">
+            <label for="isbn">ISBN</label>
+            <input type="text" class="form-control" id="isbn" placeholder="978-607-314-235-9">
+          </div>
+          <div class="form-group col-md-6">
+            <label for="isbn">Titulo</label>
+            <input type="text" class="form-control" id="isbn" placeholder="Titulo del libro">
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputAuthor">Autor</label>
+            <select id="inputAuthor" class="form-control">
+              <option *ngFor="let author of authors" id="{{author._id}}" selected>{{author.name}}</option>
+            </select>
+          </div>
+          <div class="form-group col-md-4">
+            <label for="inputEditorial">Editorial</label>
+            <select id="inputEditorial" class="form-control">
+              <option *ngFor="let editorial of editorials" id="{{editorial._id}}">{{editorial.name}}</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-2">
+              <label for="price">Precio</label>
+              <input type="number" class="form-control" id="price" placeholder="$">
+            </div>
+            <div class="form-group col-md-2">
+              <label for="amounth">Cantidad</label>
+              <input type="number" class="form-control" id="amounth" placeholder="">
+            </div>
+          </div>
+            <button type="submit" class="btn btn-primary">Agregar</button>
+        </form>
+      </div>
+      <div class="tab-pane fade" id="v-pills-seeSales" role="tabpanel" aria-labelledby="v-pills-seeSales-tab"><table class="table">
+        <thead class="thead-dark">
+          <tr class="text-center">
+            <th scope="col">Id</th>
+            <th scope="col">Usuario</th>
+            <th scope="col">Libros</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+          <tr *ngFor="let sale of sales">
+            <th scope="row">{{sale._id}}</th>
+            <td>{{sale.user.username}}</td>
+            <td >
+              <ul *ngFor="let book of sale.book" style="list-style-type:none;">
+                <li id="{{book._id}}">{{book.title}}</li>
+              </ul>  
+            </td>
+            <td>{{sale.total}}</td>
+          </tr>
+          
+        </tbody>
+      </table>
+      <div class="container">
+        <div class="row mx-md-n5">
+          <div class="col px-md-5">
+            <strong>Total: </strong>{{totalAllSale}}
+          </div>
+          
+        </div>
+        
+      </div>
+      <br><br>
+      <div id="reportButton" class="col">
+        <button class="btn btn-danger" (click)="generateReport()">Generar Reporte</button>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
