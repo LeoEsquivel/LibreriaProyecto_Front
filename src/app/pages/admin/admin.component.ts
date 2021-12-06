@@ -4,9 +4,9 @@ import { Editorial } from 'src/app/models/editorial.model';
 import { Sale } from 'src/app/models/sale.model';
 import { HttpService } from 'src/app/services/http.service';
 
-//import jsPDF from 'jspdf';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { Book } from 'src/app/models/book.model';
 
 @Component({
   selector: 'app-admin',
@@ -15,12 +15,23 @@ import html2canvas from 'html2canvas';
 })
 export class AdminComponent implements OnInit {
 
+  books: Book[] = [];
   authors: Author[] = [];
   editorials: Editorial[] = [];
   sales: Sale[] = [];
   totalAllSale: number = 0;
 
-  Authorsname:string = "";
+  Authorsname: string = "";
+  Editorialsname: string = "";
+
+  isbn:string = "";
+  title:string = "";
+  authorId:string = "";
+  editorialId:string = "";
+  price:number = 0;
+  amount:number = 0;
+  imgUrl:string = "";
+
 
   constructor(private _httpService: HttpService) { 
     this.generateReport();
@@ -28,16 +39,10 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this._httpService.getAuthors().subscribe((authors: Author[])=>{
-      this.authors = authors;
-    });
-
-    this._httpService.getEditorials().subscribe((editorials: Editorial[])=>{
-      this.editorials = editorials;
-    });
-
     this._httpService.getAllSales().subscribe((sales: Sale[])=>{
+      this.getAuthors();
+      this.getBooks();
+      this.getEditorials();
       this.sales = sales;
       for(let sale of sales){
         this.totalAllSale += sale.total
@@ -45,9 +50,82 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  public getAuthors(){
+    this._httpService.getAuthors().subscribe((authors: Author[])=>{
+      this.authors = authors;
+    });
+  }
+
+  public getEditorials(){
+    this._httpService.getEditorials().subscribe((editorials: Editorial[])=>{
+      this.editorials = editorials;
+    });
+  }
+
+  public getBooks(){
+    this._httpService.getBooks().subscribe((books:Book[])=>{
+      this.books = books;
+    })
+  }
+
   public addAuthor(){
     this._httpService.addAuthor(this.Authorsname).subscribe((data)=>{
-      console.log(data);
+      this.getAuthors();
+    });
+  }
+
+  public addEditorial(){
+    this._httpService.addEditorial(this.Editorialsname).subscribe((data)=>{
+      this.getEditorials();
+    })
+  }
+
+
+  public addBook(){
+    debugger;
+    const book = {
+      "isbn": this.isbn,
+      "title": this.title,
+      "author": this.authorId,
+      "editorial": this.editorialId,
+      "price": this.price,
+      "amounth": this.amount,
+      "imgUrl": this.imgUrl
+    }
+    debugger;
+    this._httpService.addBook(book).subscribe((data)=>{
+
+    });
+  
+  }
+
+  public updateEditorial(id:string){
+
+  }
+
+  public updateAuthor(id:string){
+
+  }
+
+  public updateBook(id:string){
+    
+  }
+
+  public deleteAuthor(id:string){
+    this._httpService.deleteAuthor(id).subscribe((data)=>{
+      this.getAuthors();
+    })
+  }
+
+  public deleteBook(id:string){
+    this._httpService.deleteBook(id).subscribe((data)=>{
+      this.getBooks();
+    })
+  }
+
+  public deleteEditorial(id:string){
+    this._httpService.deleteEditorial(id).subscribe((data)=>{
+      this.getAuthors();
     });
   }
 

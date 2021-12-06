@@ -19,50 +19,136 @@
           </div>
           <button (click)="addAuthor()"  type="submit" class="btn btn-primary">Agregar</button>
         </form>
+        <br><br>
+        <div ng-controller="tableAuthors">
+          <table ng-table class="table">
+            <thead class="thead-dark text-center">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let aut of authors">
+                <td class="text-center">{{aut.name}}</td>
+                <td class="text-center px-5">
+                  <button (click)="deleteAuthor(aut._id)" class="btn btn-outline-danger">
+                    <i class="fas fa-trash-alt"></i>
+                  </button>
+                  <a class="btn btn-outline-warning" href="#" [routerLink]="['/authoredit', aut._id]">
+                    <i class="fas fa-edit"></i>
+                  </a>
+              </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
       </div>
       <div class="tab-pane fade" id="v-pills-editorial" role="tabpanel" aria-labelledby="v-pills-editorial-tab">
         <form>
           <div class="form-group col-md-6">
             <label for="editorialsname">Nombre de la Editorial</label>
-            <input type="text" class="form-control" id="editorialsname">
+            <input [(ngModel)]="Editorialsname" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="editorialsname">
           </div>
-          <button type="submit" class="btn btn-primary">Agregar</button>
+          <button (click)="addEditorial()" type="submit" class="btn btn-primary">Agregar</button>
         </form>
+        <br><br>
+        <div ng-controller="tableEditorials">
+          <table ng-table class="table">
+            <thead class="thead-dark text-center">
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let ed of editorials">
+                <td class="text-center">{{ed.name}}</td>
+                <td class="text-center px-5">
+                    <button (click)="deleteEditorial(ed._id)" class="btn btn-outline-danger">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <a class="btn btn-outline-warning" href="#" [routerLink]="['/editorialedit', ed._id]">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="tab-pane fade" id="v-pills-book" role="tabpanel" aria-labelledby="v-pills-book-tab">
         <form>
           <div class="form-group col-md-6">
             <label for="isbn">ISBN</label>
-            <input type="text" class="form-control" id="isbn" placeholder="978-607-314-235-9">
+            <input [(ngModel)]="isbn" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="isbn" placeholder="978-607-314-235-9">
           </div>
           <div class="form-group col-md-6">
-            <label for="isbn">Titulo</label>
-            <input type="text" class="form-control" id="isbn" placeholder="Titulo del libro">
+            <label for="title">Titulo</label>
+            <input [(ngModel)]="title" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="title" placeholder="Titulo del libro">
           </div>
           <div class="form-group col-md-4">
             <label for="inputAuthor">Autor</label>
-            <select id="inputAuthor" class="form-control">
-              <option *ngFor="let author of authors" id="{{author._id}}" selected>{{author.name}}</option>
+            <select [(ngModel)]="authorId" name="authorId" id="inputAuthor" class="form-control">
+              <option *ngFor="let author of authors" [value]="author._id" id="{{author._id}}">{{author.name}}</option>
             </select>
           </div>
           <div class="form-group col-md-4">
             <label for="inputEditorial">Editorial</label>
-            <select id="inputEditorial" class="form-control">
-              <option *ngFor="let editorial of editorials" id="{{editorial._id}}">{{editorial.name}}</option>
+            <select [(ngModel)]="editorialId" name="editorialId"  id="inputEditorial" class="form-control">
+              <option *ngFor="let editorial of editorials" [value]="editorial._id">{{editorial.name}}</option>
             </select>
           </div>
           <div class="form-row">
             <div class="form-group col-md-2">
               <label for="price">Precio</label>
-              <input type="number" class="form-control" id="price" placeholder="$">
+              <input [(ngModel)]="price" [ngModelOptions]="{standalone: true}" type="number" class="form-control" id="price" placeholder="$">
             </div>
             <div class="form-group col-md-2">
               <label for="amounth">Cantidad</label>
-              <input type="number" class="form-control" id="amounth" placeholder="">
+              <input  [(ngModel)]="amount" [ngModelOptions]="{standalone: true}" type="number" class="form-control" id="amounth" placeholder="">
             </div>
           </div>
-            <button type="submit" class="btn btn-primary">Agregar</button>
-        </form>
+          <div class="form-group col-md-6">
+            <label for="title">Imagen</label>
+            <input [(ngModel)]="imgUrl" [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="title" placeholder="">
+          </div>
+            <button (click)="addBook()" type="submit" class="btn btn-primary">Agregar</button>
+        </form><br><br>
+        <div ng-controller="tableEditorials">
+          <table ng-table class="table">
+            <thead class="thead-dark text-center">
+              <tr>
+                <th scope="col">ISBN</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Author</th>
+                <th scope="col">Editorial</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let book of books">
+                <td class="text-center">{{book.isbn}}</td>
+                <td class="text-center">{{book.title}}</td>
+                <td class="text-center">{{book.author.name}}</td>
+                <td class="text-center">{{book.editorial.name}}</td>
+                <td class="text-center">${{book.price}}</td>
+                <td class="text-center">{{book.amounth}}</td>
+                <td class="text-center px-5">
+                    <button (click)="deleteBook(book._id)" class="btn btn-outline-danger">
+                      <i class="fas fa-trash-alt"></i>
+                    </button>
+                    <a class="btn btn-outline-warning" href="#" [routerLink]="['/bookedit', book._id]">
+                      <i class="fas fa-edit"></i>
+                    </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <div class="tab-pane fade" id="v-pills-seeSales" role="tabpanel" aria-labelledby="v-pills-seeSales-tab"><table class="table">
         <thead class="thead-dark">
