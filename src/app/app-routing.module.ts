@@ -13,6 +13,10 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { ReportComponent } from './pages/report/report.component';
 import { SearchComponent } from './pages/search/search.component';
+import { EditAuthorComponent } from './pages/updates/author/author.component';
+
+import { EditBookComponent } from './pages/updates/book/book.component';
+import { EditEditorialComponent } from './pages/updates/editorial/editorial.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,6 +32,10 @@ const routes: Routes = [
   { path: 'search/:query', component: SearchComponent },
   { path: 'editorialbooks/:id', component: BookslistComponent},
   { path: 'authorbooks/:id', component: BookAuthorsComponent},
+
+  { path: 'bookedit/:id', component: EditBookComponent},
+  { path: 'authoredit/:id', component: EditAuthorComponent},
+  { path: 'editorialedit/:id', component: EditEditorialComponent},
   { path: '**', pathMatch: "full", redirectTo: 'home' }
 
 ];
