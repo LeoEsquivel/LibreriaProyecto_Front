@@ -1,0 +1,16 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4"><strong>Edición de editorial</strong></h1>
+      <p class="lead"></p>
+    </div>
+</div>  <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="basic-addon3">Nombre de la editorial</span>
+  </div>
+  <input [(ngModel)]="editorial.name" type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+</div>
+<div class="row">
+    <a [routerLink]="'/admin'" class="btn btn-outline-danger">Regresar</a><br>
+    <button (click)="saveChanges()" class="btn btn-outline-primary">Guardar</button>
+</div>
+<br><br><br>
