@@ -1,0 +1,59 @@
+<h2>{{book.title | uppercase}}</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <img [src]="book.imgUrl" [alt]="book.title" class="img-fluid">
+        <br><br>
+        <a [routerLink]="'/admin'" class="btn btn-outline-danger">Regresar</a>
+    </div>
+    <div class="col-md-8">
+        <h3><strong>ID: </strong> {{book._id}}</h3>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="isbn">ISBN</span>
+            </div>
+            <input [(ngModel)]="book.isbn" type="text" class="form-control" id="isbnid" aria-describedby="isbn">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="titulo">Titulo</span>
+            </div>
+            <input [(ngModel)]="book.title" type="text" class="form-control" id="tituloid" aria-describedby="titulo">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="autorsBook">Autor</label>
+            </div>
+            <select class="custom-select" id="autorsBook">
+              <option selected>{{book.author.name}}</option>
+              <option *ngFor="let author of authors" [ngValue]="author._id">{{author.name}}</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="editorialBook">Editorial</label>
+            </div>
+            <select class="custom-select" id="editorialBook">
+              <option selected>{{book.editorial.name}}</option>
+              <option *ngFor="let editorial of editorials" [ngValue]="editorial._id">{{editorial.name}}</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Precio</span>
+              <span class="input-group-text">$ {{book.price}}</span>
+            </div>
+            <input [(ngModel)]="book.price" type="number" class="form-control">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Disponibles</span>
+              <span class="input-group-text">{{book.amounth}}</span>
+            </div>
+            <input [(ngModel)]="book.amounth" type="number" class="form-control">
+        </div>
+        <button (click)="saveChanges()" class="btn btn-outline-primary">Guardar</button>
+
+    </div>    
+</div>
+
