@@ -20,6 +20,9 @@ import { SearchComponent } from './pages/search/search.component';
 import { BookslistComponent } from './pages/bookslist/bookslist.component';
 import { BookAuthorsComponent } from './pages/book-authors/book-authors.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EditAuthorComponent } from './pages/updates/author/author.component';
+import { EditEditorialComponent } from './pages/updates/editorial/editorial.component';
+import { EditBookComponent } from './pages/updates/book/book.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EditorialsComponent,
     SearchComponent,
     BookslistComponent,
-    BookAuthorsComponent
+    BookAuthorsComponent,
+    EditAuthorComponent,
+    EditEditorialComponent,
+    EditBookComponent
   ],
   imports: [
     BrowserModule,
